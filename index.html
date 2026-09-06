@@ -16,7 +16,7 @@
             --bg-gray: #f8fafc;
             --text-dark: #0f172a;
             --text-gray: #475569;
-            --border-light: #e2e8f0;
+            --border-light: #cbd5e1;
         }
 
         * {
@@ -100,7 +100,7 @@
         .btn {
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: #fff;
-            padding: 10px 24px;
+            padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 800;
@@ -127,7 +127,7 @@
             color: #fff;
         }
 
-        /* قسم البطل (Hero Section) مع صورة اجتماع المحامين */
+        /* قسم البطل */
         .hero {
             display: flex;
             align-items: center;
@@ -203,7 +203,7 @@
             border-radius: 2px;
         }
 
-        /* قسم فريق العمل */
+        /* قسم فريق العمل - صور رسمية موثوقة */
         .team-section {
             background-color: var(--bg-white);
             padding: 20px 5% 70px;
@@ -239,7 +239,7 @@
         .team-info .role { color: var(--gold); font-weight: 800; font-size: 1.1rem; margin-bottom: 15px; }
         .team-info .exp { color: var(--text-gray); font-size: 0.95rem; font-weight: 600; }
 
-        /* قسم الثقة والصور القانونية */
+        /* قسم الثقة - استبدال الكتاب بصورة اجتماع محامين واقعية */
         .trust-banner {
             background: var(--bg-cream);
             padding: 60px 5%;
@@ -251,7 +251,14 @@
             border-bottom: 1px solid var(--border-light);
         }
         .trust-image { flex: 1; min-width: 300px; text-align: center; }
-        .trust-image img { width: 100%; max-width: 480px; border-radius: 12px; box-shadow: 15px 15px 0px -2px var(--gold); }
+        .trust-image img { 
+            width: 100%; 
+            max-width: 500px; 
+            height: 340px;
+            object-fit: cover;
+            border-radius: 12px; 
+            box-shadow: 12px 12px 0px -2px var(--gold); 
+        }
         .trust-content { flex: 1.5; min-width: 300px; }
         .trust-content h2 { font-size: 2.2rem; color: var(--navy-blue); font-weight: 900; margin-bottom: 20px; }
         .trust-content p { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 20px; }
@@ -308,7 +315,7 @@
         .client-name { font-weight: 900; color: var(--navy-blue); font-size: 1.1rem; }
         .client-case { color: var(--text-gray); font-size: 0.9rem; font-weight: 600; }
 
-        /* قسم الحجز */
+        /* قسم الحجز والتعديلات الواسعة (إصلاح ضيق النموذج ورقم الهاتف) */
         .booking-section {
             display: flex;
             background: var(--bg-white);
@@ -318,32 +325,34 @@
             box-shadow: 0 20px 40px rgba(30, 58, 138, 0.08);
             flex-wrap: wrap;
             border: 1px solid var(--border-light);
+            width: 90%;
         }
         .booking-info {
             flex: 1;
             background: var(--navy-dark);
             color: #fff;
-            padding: 50px;
-            min-width: 300px;
+            padding: 45px 35px;
+            min-width: 320px;
         }
         .booking-info h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 15px; color: var(--gold-light); }
         .booking-info p { color: #cbd5e1; margin-bottom: 30px; font-size: 1.05rem; }
         .info-card {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.08);
             padding: 16px 20px;
             border-radius: 8px;
             margin-bottom: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.12);
             display: flex;
             align-items: center;
             gap: 15px;
             font-weight: 700;
             font-size: 1rem;
+            word-break: break-word;
         }
         .booking-form {
-            flex: 1.5;
-            padding: 50px;
-            min-width: 300px;
+            flex: 1.8; /* إعطاء مساحة أكبر للنموذج لمنع الضيق */
+            padding: 45px 35px;
+            min-width: 320px;
         }
         .form-grid {
             display: grid;
@@ -354,13 +363,14 @@
         .form-group { display: flex; flex-direction: column; gap: 8px; }
         .form-group label { font-weight: 800; font-size: 0.95rem; color: var(--text-dark); }
         .form-control {
-            padding: 14px 16px;
+            padding: 12px 14px;
             border-radius: 8px;
             border: 2px solid var(--border-light);
             background: var(--bg-gray);
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
             transition: all 0.3s;
+            width: 100%;
         }
         .form-control:focus { border-color: var(--navy-blue); background: #fff; box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1); }
         .full-width { grid-column: span 2; }
@@ -406,14 +416,17 @@
             color: #94a3b8;
         }
 
-        @media (max-width: 900px) {
+        /* تعديلات الشاشات الصغيرة (الموبايل) */
+        @media (max-width: 850px) {
             header { flex-direction: column; text-align: center; gap: 15px; }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
-            .hero-content h1 { font-size: 2.4rem; }
+            .hero-content h1 { font-size: 2.3rem; }
+            .booking-section { flex-direction: column; margin: 40px 4%; width: 92%; }
             .form-grid { grid-template-columns: 1fr; }
             .full-width { grid-column: span 1; }
-            .booking-info, .booking-form { padding: 30px 20px; }
+            .booking-info, .booking-form { padding: 30px 20px; width: 100%; min-width: 100%; }
             .trust-banner { flex-direction: column-reverse; text-align: center; }
+            .trust-image img { height: 260px; }
         }
     </style>
 </head>
@@ -439,7 +452,7 @@
     </header>
 
     <main>
-        <!-- قسم البطل مع صورة اجتماع محامين واقعية -->
+        <!-- قسم البطل -->
         <section class="hero">
             <div class="hero-content">
                 <h1>نحمي حقوقك <br><span>بقوة القانون والخبرة</span></h1>
@@ -467,7 +480,7 @@
             </div>
         </section>
 
-        <!-- قسم فريق العمل (محامين رجال) -->
+        <!-- قسم فريق العمل (صور محامين رسميين ملائمين) -->
         <section class="team-section" id="team">
             <h2 class="section-title">نخبة من خيرة المحامين</h2>
             <p class="section-subtitle">فريق قانوني متكامل يمتلك خبرات واسعة في مختلف التخصصات لضمان نجاح قضيتك.</p>
@@ -475,7 +488,7 @@
             <div class="team-grid">
                 <!-- المحامي الأول -->
                 <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="د. إبراهيم الجبوري">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="د. إبراهيم الجبوري">
                     <div class="team-info">
                         <h3>د. إبراهيم الجبوري</h3>
                         <div class="role">المؤسس والمستشار الأول</div>
@@ -483,9 +496,9 @@
                     </div>
                 </div>
 
-                <!-- المحامي الثاني (جديد) -->
+                <!-- المحامي الثاني -->
                 <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="المحامي يوسف العبيدي">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="المحامي يوسف العبيدي">
                     <div class="team-info">
                         <h3>المحامي يوسف العبيدي</h3>
                         <div class="role">رئيس قسم الأحوال الشخصية والمدني</div>
@@ -495,7 +508,7 @@
 
                 <!-- المحامي الثالث -->
                 <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=600&q=80" alt="المحامي أحمد الطائي">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80" alt="المحامي أحمد الطائي">
                     <div class="team-info">
                         <h3>المحامي أحمد الطائي</h3>
                         <div class="role">خبير العقود وتأسيس الشركات</div>
@@ -505,10 +518,10 @@
             </div>
         </section>
 
-        <!-- قسم صورة القانون والميزان الواقعي -->
+        <!-- قسم الصورة بدلاً من صورة الكتاب: اجتماع محامين داخل المكتب -->
         <section class="trust-banner">
             <div class="trust-image">
-                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80" alt="ميزان العدالة والقانون">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="اجتماع فريق المحاماة في المكتب">
             </div>
             <div class="trust-content">
                 <h2>لماذا تختار مكتبنا لتمثيلك القانوني؟</h2>
@@ -573,12 +586,12 @@
             </div>
         </section>
 
-        <!-- نموذج الحجز -->
+        <!-- نموذج الحجز (مساحة مريحة ومعدلة) -->
         <section class="booking-section" id="booking">
             <div class="booking-info">
                 <h2>ابدأ بحماية حقوقك اليوم</h2>
                 <p>لا تتردد في طلب المشورة. املأ النموذج المجاور وسيقوم فريقنا بالتواصل معك لتحديد موعد للاستشارة.</p>
-                <div class="info-card">📞 الهاتف: 0750 000 1234</div>
+                <div class="info-card">📞 الهاتف: 07500001234</div>
                 <div class="info-card">📍 العنوان: الموصل - قرب مجمع المحاكم</div>
                 <div class="info-card">⏱️ أوقات الدوام: الأحد - الخميس (8 صباحاً - 4 عصراً)</div>
             </div>
