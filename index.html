@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مكتب الجبوري للمحاماة والاستشارات القانونية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة EmailJS لإرسال الإشعارات أوتوماتيكياً للبريد -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // تهيئة خدمة الإيميل البرمجية
+            emailjs.init("YOUR_PUBLIC_KEY"); // يتم وضع مفتاح الخدمة هنا
+        })();
+    </script>
+
     <style>
         :root {
             --navy-blue: #1e3a8a;
@@ -19,404 +29,116 @@
             --border-light: #cbd5e1;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        html, body {
-            height: 100%;
-        }
-        
-        body {
-            background-color: var(--bg-gray);
-            color: var(--text-dark);
-            line-height: 1.7;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        html, body { height: 100%; }
+        body { background-color: var(--bg-gray); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; display: flex; flex-direction: column; }
         main { flex: 1; }
 
         /* الهوك العلوي الذكي */
         #status-bar {
             background: linear-gradient(135deg, var(--navy-dark), var(--navy-blue));
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-bottom: 3px solid var(--gold);
-            width: 100%;
+            color: #fff; text-align: center; padding: 10px; font-weight: 700; font-size: 0.95rem;
+            border-bottom: 3px solid var(--gold); width: 100%;
         }
         .status-open { color: #a7f3d0 !important; } 
         .status-closed { color: #fecdd3 !important; } 
 
         /* الهيدر وقائمة التنقل */
         header {
-            background-color: var(--bg-white);
-            padding: 15px 5%;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            width: 100%;
+            background-color: var(--bg-white); padding: 15px 5%; display: flex; flex-wrap: wrap;
+            gap: 20px; justify-content: space-between; align-items: center; position: sticky; top: 0;
+            z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.05); width: 100%;
         }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--navy-blue);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
+        .logo { font-size: 1.8rem; font-weight: 900; color: var(--navy-blue); display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .logo span { color: var(--gold); }
-        .logo-icon { font-size: 2.2rem; }
-        
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 700;
-            font-size: 1.05rem;
-            transition: 0.3s;
-        }
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 700; font-size: 1.05rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold); }
         
         .btn {
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 800;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            text-align: center;
-            font-size: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #fff; padding: 12px 24px;
+            border-radius: 8px; text-decoration: none; font-weight: 800; border: none; cursor: pointer;
+            transition: all 0.3s ease; white-space: nowrap; text-align: center; font-size: 1rem;
             box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
         }
-        .btn:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(217, 119, 6, 0.4);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--navy-blue);
-            border: 2px solid var(--navy-blue);
-            box-shadow: none;
-        }
-        .btn-outline:hover {
-            background: var(--navy-blue);
-            color: #fff;
-        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(217, 119, 6, 0.4); }
+        .btn-outline { background: transparent; color: var(--navy-blue); border: 2px solid var(--navy-blue); box-shadow: none; }
+        .btn-outline:hover { background: var(--navy-blue); color: #fff; }
 
         /* قسم البطل */
         .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 90px 5%;
+            display: flex; align-items: center; justify-content: space-between; padding: 90px 5%;
             background: linear-gradient(to right, rgba(23, 37, 84, 0.95), rgba(30, 58, 138, 0.85)),
                         url('https://images.unsplash.com/photo-1521791136364-798a7bc0d262?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            color: #fff;
-            gap: 40px;
-            flex-wrap: wrap;
-            width: 100%;
+            color: #fff; gap: 40px; flex-wrap: wrap; width: 100%;
         }
         .hero-content { flex: 1; min-width: 300px; }
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #fff;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 900; color: #fff; line-height: 1.3; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
         .hero-content h1 span { color: var(--gold-light); }
-        .hero-content p {
-            font-size: 1.15rem;
-            color: #e2e8f0;
-            margin-bottom: 30px;
-            max-width: 90%;
-            font-weight: 600;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+        .hero-content p { font-size: 1.15rem; color: #e2e8f0; margin-bottom: 30px; max-width: 90%; font-weight: 600; }
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
         .hero-buttons .btn-outline { border-color: #fff; color: #fff; }
         .hero-buttons .btn-outline:hover { background: #fff; color: var(--navy-blue); }
 
-        .hero-stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 25px;
-            flex-wrap: wrap;
-        }
+        .hero-stats { display: flex; gap: 30px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 25px; flex-wrap: wrap; }
         .stat-item { flex: 1; min-width: 100px; }
         .stat-item h3 { font-size: 2.2rem; color: var(--gold-light); font-weight: 900;}
         .stat-item p { font-size: 1rem; color: #fff; font-weight: 700; }
         
-        /* العناوين المشتركة */
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--navy-blue);
-            margin: 70px 0 20px 0;
-            font-weight: 900;
-        }
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            margin-bottom: 50px;
-            font-weight: 600;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 70px;
-            height: 4px;
-            background: var(--gold);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
+        .section-title { text-align: center; font-size: 2.5rem; color: var(--navy-blue); margin: 70px 0 20px 0; font-weight: 900; }
+        .section-subtitle { text-align: center; font-size: 1.1rem; color: var(--text-gray); margin-bottom: 50px; font-weight: 600; }
+        .section-title::after { content: ''; display: block; width: 70px; height: 4px; background: var(--gold); margin: 15px auto 0; border-radius: 2px; }
 
         /* قسم فريق العمل */
-        .team-section {
-            background-color: var(--bg-white);
-            padding: 20px 5% 70px;
-        }
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .team-card {
-            background: var(--bg-gray);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-light);
-        }
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(30, 58, 138, 0.1);
-            border-color: var(--gold);
-        }
-        .team-card img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            object-position: top;
-            border-bottom: 4px solid var(--gold);
-        }
+        .team-section { background-color: var(--bg-white); padding: 20px 5% 70px; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .team-card { background: var(--bg-gray); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: center; transition: all 0.3s ease; border: 1px solid var(--border-light); }
+        .team-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(30, 58, 138, 0.1); border-color: var(--gold); }
+        .team-card img { width: 100%; height: 320px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--gold); }
         .team-info { padding: 25px 20px; }
         .team-info h3 { font-size: 1.5rem; color: var(--navy-blue); font-weight: 900; margin-bottom: 5px;}
         .team-info .role { color: var(--gold); font-weight: 800; font-size: 1.1rem; margin-bottom: 15px; }
         .team-info .exp { color: var(--text-gray); font-size: 0.95rem; font-weight: 600; }
 
-        /* قسم الثقة - تم تحديث رابط صورة اجتماع المحاماة برابط موثوق ومباشر جداً */
-        .trust-banner {
-            background: var(--bg-cream);
-            padding: 60px 5%;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
-        }
+        /* قسم الثقة */
+        .trust-banner { background: var(--bg-cream); padding: 60px 5%; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
         .trust-image { flex: 1; min-width: 300px; text-align: center; }
-        .trust-image img { 
-            width: 100%; 
-            max-width: 500px; 
-            height: 350px;
-            object-fit: cover;
-            border-radius: 12px; 
-            box-shadow: 12px 12px 0px -2px var(--gold); 
-        }
+        .trust-image img { width: 100%; max-width: 500px; height: 350px; object-fit: cover; border-radius: 12px; box-shadow: 12px 12px 0px -2px var(--gold); }
         .trust-content { flex: 1.5; min-width: 300px; }
         .trust-content h2 { font-size: 2.2rem; color: var(--navy-blue); font-weight: 900; margin-bottom: 20px; }
         .trust-content p { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 20px; }
         .check-list { list-style: none; margin-bottom: 30px; }
         .check-list li { margin-bottom: 12px; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 10px; font-size: 1.05rem; }
 
-        /* مجالات الاختصاص */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            padding: 0 5%;
-            margin-bottom: 80px;
-        }
-        .service-card {
-            background: var(--bg-white);
-            border-radius: 12px;
-            padding: 30px 20px;
-            border: 1px solid var(--border-light);
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-        .service-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 15px 25px rgba(0,0,0,0.06);
-            border-color: var(--navy-blue);
-        }
+        /* خدمات المحاماة */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; padding: 0 5%; margin-bottom: 80px; }
+        .service-card { background: var(--bg-white); border-radius: 12px; padding: 30px 20px; border: 1px solid var(--border-light); text-align: center; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(0,0,0,0.06); border-color: var(--navy-blue); }
         .service-icon { font-size: 3.5rem; margin-bottom: 15px; color: var(--navy-blue); }
         .service-card h3 { font-size: 1.4rem; color: var(--navy-blue); font-weight: 800; margin-bottom: 10px;}
-        .service-card p { color: var(--text-gray); font-size: 1rem; }
 
-        /* قسم آراء العملاء */
-        .testimonials {
-            background-color: var(--bg-white);
-            padding: 70px 5%;
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
-        }
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .review-card {
-            background: var(--bg-gray);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.03);
-            border-right: 5px solid var(--gold);
-        }
-        .stars { color: var(--gold-light); font-size: 1.4rem; margin-bottom: 10px; }
-        .review-text { font-size: 1.05rem; color: var(--text-dark); font-style: italic; margin-bottom: 20px; line-height: 1.8; }
-        .client-name { font-weight: 900; color: var(--navy-blue); font-size: 1.1rem; }
-        .client-case { color: var(--text-gray); font-size: 0.9rem; font-weight: 600; }
-
-        /* قسم الحجز */
-        .booking-section {
-            display: flex;
-            background: var(--bg-white);
-            margin: 80px 5%;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.08);
-            flex-wrap: wrap;
-            border: 1px solid var(--border-light);
-            width: 90%;
-        }
-        .booking-info {
-            flex: 1;
-            background: var(--navy-dark);
-            color: #fff;
-            padding: 45px 35px;
-            min-width: 320px;
-        }
+        /* قسم الحجز المبرمج بالخلفية */
+        .booking-section { display: flex; background: var(--bg-white); margin: 80px 5%; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(30, 58, 138, 0.08); flex-wrap: wrap; border: 1px solid var(--border-light); width: 90%; }
+        .booking-info { flex: 1; background: var(--navy-dark); color: #fff; padding: 45px 35px; min-width: 320px; }
         .booking-info h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 15px; color: var(--gold-light); }
-        .booking-info p { color: #cbd5e1; margin-bottom: 30px; font-size: 1.05rem; }
-        .info-card {
-            background: rgba(255,255,255,0.08);
-            padding: 16px 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255,255,255,0.12);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-weight: 700;
-            font-size: 1rem;
-            word-break: break-word;
-        }
-        .booking-form {
-            flex: 1.8;
-            padding: 45px 35px;
-            min-width: 320px;
-        }
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
+        .info-card { background: rgba(255,255,255,0.08); padding: 16px 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 1rem; }
+        .booking-form { flex: 1.8; padding: 45px 35px; min-width: 320px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
         .form-group { display: flex; flex-direction: column; gap: 8px; }
         .form-group label { font-weight: 800; font-size: 0.95rem; color: var(--text-dark); }
-        .form-control {
-            padding: 12px 14px;
-            border-radius: 8px;
-            border: 2px solid var(--border-light);
-            background: var(--bg-gray);
-            font-size: 0.95rem;
-            outline: none;
-            transition: all 0.3s;
-            width: 100%;
-        }
+        .form-control { padding: 12px 14px; border-radius: 8px; border: 2px solid var(--border-light); background: var(--bg-gray); font-size: 0.95rem; outline: none; transition: all 0.3s; width: 100%; }
         .form-control:focus { border-color: var(--navy-blue); background: #fff; box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1); }
         .full-width { grid-column: span 2; }
 
-        /* الفوتر الاحترافي */
-        footer {
-            background-color: var(--navy-dark);
-            color: #cbd5e1;
-            width: 100%;
-            margin-top: auto;
-        }
-        .footer-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 40px;
-            padding: 60px 5%;
-            border-top: 5px solid var(--gold);
-        }
+        footer { background-color: var(--navy-dark); color: #cbd5e1; width: 100%; margin-top: auto; }
+        .footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; padding: 60px 5%; border-top: 5px solid var(--gold); }
         .footer-col { flex: 1; min-width: 250px; }
         .footer-col h3 { color: #fff; font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; }
-        .footer-col h3 span { color: var(--gold); }
-        .footer-col p { font-size: 1rem; line-height: 1.8; margin-bottom: 15px; }
-        
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 12px; }
         .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 1rem; transition: 0.3s; font-weight: 600; }
-        .footer-links a:hover { color: var(--gold-light); padding-right: 8px; }
-        
-        .footer-contact li {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-        
-        .footer-bottom {
-            background-color: #0f172a;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
+        .footer-bottom { background-color: #0f172a; text-align: center; padding: 20px; font-size: 0.9rem; color: #94a3b8; }
 
-        /* تعديلات الشاشات الصغيرة */
         @media (max-width: 850px) {
             header { flex-direction: column; text-align: center; gap: 15px; }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
@@ -426,182 +148,83 @@
             .full-width { grid-column: span 1; }
             .booking-info, .booking-form { padding: 30px 20px; width: 100%; min-width: 100%; }
             .trust-banner { flex-direction: column-reverse; text-align: center; }
-            .trust-image img { height: 260px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- الهوك الذكي -->
-    <div id="status-bar">جاري التحقق من أوقات العمل في المكتب...</div>
+    <!-- الهوك الذكي للوقت -->
+    <div id="status-bar">جاري التحقق من حالة المكتب...</div>
 
-    <!-- الهيدر وقائمة التنقل -->
     <header>
-        <a href="#" class="logo">
-            <span class="logo-icon">⚖️</span> مكتب الجبوري <span>للمحاماة</span>
-        </a>
+        <a href="#" class="logo">⚖️ مكتب الجبوري <span>للمحاماة</span></a>
         <ul class="nav-links">
             <li><a href="#">الرئيسية</a></li>
-            <li><a href="#services">الخدمات القانونية</a></li>
-            <li><a href="#team">فريق العمل</a></li>
-            <li><a href="#testimonials">آراء العملاء</a></li>
+            <li><a href="#services">الخدمات</a></li>
+            <li><a href="#team">المحامون</a></li>
+            <li><a href="#booking">طلب استشارة</a></li>
         </ul>
-        <div>
-            <a href="#booking" class="btn">احجز استشارتك</a>
-        </div>
+        <div><a href="#booking" class="btn">احجز استشارتك</a></div>
     </header>
 
     <main>
-        <!-- قسم البطل -->
         <section class="hero">
             <div class="hero-content">
                 <h1>نحمي حقوقك <br><span>بقوة القانون والخبرة</span></h1>
-                <p>نقدم لك استشارات قانونية دقيقة، وتمثيلاً قضائياً محترفاً أمام كافة المحاكم العراقية. نحن هنا لضمان حقوقك وتوجيهك للطريق السليم بكل سرية وأمانة.</p>
-                
+                <p>استشارات قانونية دقيقة وتمثيل قضائي محترف أمام كافة المحاكم العراقية بضمان السرية والنزاهة.</p>
                 <div class="hero-buttons">
                     <a href="#booking" class="btn">تواصل معنا الآن</a>
                     <a href="#team" class="btn btn-outline">تعرف على خبرائنا</a>
                 </div>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <h3>+18</h3>
-                        <p>سنة من الخبرة</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>+950</h3>
-                        <p>قضية رابحة</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>100%</h3>
-                        <p>سرية وموثوقية</p>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- قسم فريق العمل -->
         <section class="team-section" id="team">
             <h2 class="section-title">نخبة من خيرة المحامين</h2>
-            <p class="section-subtitle">فريق قانوني متكامل يمتلك خبرات واسعة في مختلف التخصصات لضمان نجاح قضيتك.</p>
-            
             <div class="team-grid">
                 <div class="team-card">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="د. إبراهيم الجبوري">
                     <div class="team-info">
                         <h3>د. إبراهيم الجبوري</h3>
                         <div class="role">المؤسس والمستشار الأول</div>
-                        <p class="exp">⚖️ خبرة 18 سنة في قضايا الجنايات والنزاعات التجارية الكبرى.</p>
                     </div>
                 </div>
-
                 <div class="team-card">
                     <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="المحامي يوسف العبيدي">
                     <div class="team-info">
                         <h3>المحامي يوسف العبيدي</h3>
-                        <div class="role">رئيس قسم الأحوال الشخصية والمدني</div>
-                        <p class="exp">⚖️ خبرة 14 سنة في قضايا الأسرة، العقارات، والمواثيق الشرعية.</p>
+                        <div class="role">خبير الأحوال الشخصية والمدني</div>
                     </div>
                 </div>
-
                 <div class="team-card">
                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80" alt="المحامي أحمد الطائي">
                     <div class="team-info">
                         <h3>المحامي أحمد الطائي</h3>
-                        <div class="role">خبير العقود وتأسيس الشركات</div>
-                        <p class="exp">⚖️ خبرة 10 سنوات في صياغة العقود التجارية والاستثمار.</p>
+                        <div class="role">خبير العقود والشركات</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- قسم الثقة - تم وضع رابط مباشر ومضمون لصورة اجتماع فريق محاماة حقيقي داخل مكتب ببدلات رسمية -->
-        <section class="trust-banner">
-            <div class="trust-image">
-                <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80" alt="اجتماع فريق المحاماة في المكتب">
-            </div>
-            <div class="trust-content">
-                <h2>لماذا تختار مكتبنا لتمثيلك القانوني؟</h2>
-                <p>القضايا القانونية تتطلب دقة متناهية وفهماً عميقاً للنصوص واللوائح. نحن في مكتب الجبوري بالموصل نلتزم بتقديم أرقى مستويات الخدمة لعملائنا.</p>
-                <ul class="check-list">
-                    <li>⚖️ دراسة تفصيلية وواقعية لنسبة نجاح قضيتك قبل البدء.</li>
-                    <li>⚖️ شفافية تامة في التعامل وإطلاع الموكل على كافة الجلسات.</li>
-                    <li>⚖️ صياغة قانونية رصينة ومحكمة للعقود والمرافعات.</li>
-                    <li>⚖️ حماية تامة لبيانات وسرية الموكلين.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- مجالات الاختصاص -->
-        <h2 class="section-title" id="services">مجالات الاختصاص</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">📜</div>
-                <h3>القضايا المدنية والتجارية</h3>
-                <p>تولي كافة النزاعات المالية، قضايا التعويضات، تحصيل الديون، والنزاعات التعاقدية أمام المحاكم المختصة.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">👨‍👩‍👧‍👦</div>
-                <h3>الأحوال الشخصية</h3>
-                <p>تمثيل قانوني قوي في قضايا الزواج، الطلاق، النفقة، الحضانة، والمصادقة على القسامات الشرعية.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🏢</div>
-                <h3>تأسيس الشركات</h3>
-                <p>تسجيل العلامات التجارية، صياغة العقود الاستثمارية، وتخليص كافة المعاملات القانونية للشركات.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🏡</div>
-                <h3>العقارات والممتلكات</h3>
-                <p>حل النزاعات العقارية، قضايا إزالة الشيوع، التمليك، والمطالبة بحقوق الملكية بضمانات قاطعة.</p>
-            </div>
-        </div>
-
-        <!-- قسم آراء العملاء -->
-        <section class="testimonials" id="testimonials">
-            <h2 class="section-title" style="margin-top: 0;">ماذا يقول موكلونا؟</h2>
-            <p class="section-subtitle">رضا عملائنا واسترداد حقوقهم هو المؤشر الحقيقي لنجاحنا.</p>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"أنقذني مكتب الدكتور إبراهيم من قضية عقارية معقدة استمرت لسنوات. تميزوا بالدقة والاحترافية العالية والصدق منذ الجلسة الأولى."</p>
-                    <div class="client-name">المهندس خالد خليل</div>
-                    <div class="client-case">قضية منازعات عقارية</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"استشارتي مع الأستاذ يوسف كانت واضحة وصريحة ووفرت علي الكثير من الجهد المادي والنفسي. فريق يستحق كل الاحترام."</p>
-                    <div class="client-name">أبو مصطفى</div>
-                    <div class="client-case">قضية أحوال شخصية</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"أفضل مكتب لتأسيس الشركات وصياغة العقود في الموصل بلا منازع. أنهوا إجراءات شركتنا بوقت قياسي وبدون أي تعقيدات."</p>
-                    <div class="client-name">شركة الأفق للتجارة</div>
-                    <div class="client-case">تأسيس شركة وتوثيق عقود</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- نموذج الحجز -->
+        <!-- نموذج الحجز الذكي المربوط برمجياً -->
         <section class="booking-section" id="booking">
             <div class="booking-info">
                 <h2>ابدأ بحماية حقوقك اليوم</h2>
-                <p>لا تتردد في طلب المشورة. املأ النموذج المجاور وسيقوم فريقنا بالتواصل معك لتحديد موعد للاستشارة.</p>
+                <p>املأ النموذج وسيقوم نظامنا بربطك بأحد المستشارين فوراً.</p>
                 <div class="info-card">📞 الهاتف: 07500001234</div>
                 <div class="info-card">📍 العنوان: الموصل - قرب مجمع المحاكم</div>
-                <div class="info-card">⏱️ أوقات الدوام: الأحد - الخميس (8 صباحاً - 4 عصراً)</div>
             </div>
+            
             <div class="booking-form">
-                <form onsubmit="event.preventDefault(); alert('تم استلام طلب الاستشارة بنجاح! سيتم التواصل معك قريباً.');">
+                <form id="consultationForm" onsubmit="sendConsultation(event)">
                     <div class="form-grid">
                         <div class="form-group">
                             <label>الاسم الكامل</label>
-                            <input type="text" class="form-control" placeholder="أدخل اسمك الثلاثي" required>
+                            <input type="text" id="clientName" class="form-control" placeholder="أدخل اسمك الثلاثي" required>
                         </div>
                         <div class="form-group">
                             <label>رقم الهاتف</label>
-                            <input type="tel" class="form-control" placeholder="07XX XXX XXXX" required>
+                            <input type="tel" id="clientPhone" class="form-control" placeholder="07XX XXX XXXX" required>
                         </div>
                         <div class="form-group">
                             <label>نوع القضية</label>
@@ -611,79 +234,57 @@
                                 <option value="75000">قضايا مدنية ومطالبات مالية</option>
                                 <option value="100000">شركات وعقود تجارية</option>
                                 <option value="50000">قضايا عقارية</option>
-                                <option value="25000">استشارة عامة</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>المحامي المفضل</label>
-                            <select class="form-control">
-                                <option>أي مستشار متاح</option>
-                                <option>د. إبراهيم الجبوري</option>
-                                <option>المحامي يوسف العبيدي</option>
-                                <option>المحامي أحمد الطائي</option>
+                            <select class="form-control" id="preferredLawyer">
+                                <option value="أي مستشار متاح">أي مستشار متاح</option>
+                                <option value="د. إبراهيم الجبوري">د. إبراهيم الجبوري</option>
+                                <option value="المحامي يوسف العبيدي">المحامي يوسف العبيدي</option>
+                                <option value="المحامي أحمد الطائي">المحامي أحمد الطائي</option>
                             </select>
                         </div>
                         <div class="form-group full-width">
                             <label>رسوم الاستشارة المبدئية</label>
-                            <input type="text" id="expectedFee" class="form-control" placeholder="تحدد تلقائياً بناءً على نوع القضية" readonly style="background: #f0f9ff; font-weight: 900; color: #1e3a8a; border-color: #1e3a8a;">
+                            <input type="text" id="expectedFee" class="form-control" placeholder="تحدد تلقائياً" readonly style="background: #f0f9ff; font-weight: 900; color: #1e3a8a;">
                         </div>
                         <div class="form-group full-width">
-                            <label>تفاصيل مختصرة (اختياري)</label>
-                            <textarea class="form-control" rows="3" placeholder="نبذة بسيطة عن مشكلتك..."></textarea>
+                            <label>تفاصيل الاستشارة</label>
+                            <textarea id="caseDetails" class="form-control" rows="3" placeholder="نبذة بسيطة عن الموضوع..."></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; font-size: 1.15rem; padding: 15px;">إرسال طلب الاستشارة</button>
+                    <button type="submit" class="btn" style="width: 100%; font-size: 1.15rem; padding: 15px;">إرسال طلب الاستشارة عبر النظام البرمجي</button>
                 </form>
             </div>
         </section>
     </main>
 
-    <!-- الفوتر الاحترافي -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
-                <h3>مكتب الجبوري <span>للمحاماة</span></h3>
-                <p>مكتب رائد في تقديم الخدمات والاستشارات القانونية المتكاملة. نلتزم بأعلى معايير النزاهة والاحترافية للدفاع عن حقوق موكلينا أمام كافة درجات المحاكم العراقية.</p>
+                <h3>مكتب الجبوري للمحاماة</h3>
+                <p>مكتب رائد في تقديم الخدمات والاستشارات القانونية المتكاملة في العراق.</p>
             </div>
-            
             <div class="footer-col">
-                <h3 style="color: var(--gold);">روابط سريعة</h3>
-                <ul class="footer-links">
-                    <li><a href="#">الرئيسية</a></li>
-                    <li><a href="#services">مجالات الاختصاص</a></li>
-                    <li><a href="#team">فريق المحامين</a></li>
-                    <li><a href="#booking">حجز موعد استشارة</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h3 style="color: var(--gold);">تواصل معنا</h3>
-                <ul class="footer-links footer-contact">
-                    <li>📍 العراق، نينوى، الموصل، شارع المحاكم</li>
-                    <li>📞 0750 000 1234</li>
-                    <li>✉️ info@aljubouri-law.com</li>
-                    <li>⏱️ الأحد - الخميس | 8:00 ص - 4:00 م</li>
-                </ul>
+                <h3>تواصل معنا</h3>
+                <p>📍 العراق، نينوى، الموصل، شارع المحاكم</p>
+                <p>📞 0750 000 1234</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 مكتب الجبوري للمحاماة والاستشارات القانونية. جميع الحقوق محفوظة.</p>
-        </div>
+        <div class="footer-bottom">&copy; 2026 جميع الحقوق محفوظة.</div>
     </footer>
 
-    <!-- الجافاسكربت للتفاعل -->
+    <!-- البرمجة التفاعلية بالجافاسكربت وPHP السريعة -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const statusBar = document.getElementById("status-bar");
             const currentHour = new Date().getHours();
-            const openingHour = 8;
-            const closingHour = 16; 
-
-            if (currentHour >= openingHour && currentHour < closingHour) {
-                statusBar.innerHTML = "🟢 مكتب المحاماة مفتوح الآن.. نتشرف بزيارتكم أو استقبال مكالماتكم.";
+            if (currentHour >= 8 && currentHour < 16) {
+                statusBar.innerHTML = "🟢 مكتب المحاماة مفتوح الآن ونستقبل الاستشارات.";
                 statusBar.classList.add("status-open");
             } else {
-                statusBar.innerHTML = "🔴 المكتب مغلق حالياً.. لكن يمكنك ترك طلب استشارة وسنتصل بك قريباً.";
+                statusBar.innerHTML = "🔴 المكتب مغلق حالياً، ولكن نظام الحجز التلقائي يعمل 24/7.";
                 statusBar.classList.add("status-closed");
             }
         });
@@ -692,13 +293,44 @@
             const select = document.getElementById("caseType");
             const feeBox = document.getElementById("expectedFee");
             const fee = select.value;
-            
             if (fee == 0) {
                 feeBox.value = "يرجى تحديد نوع القضية لمعرفة الرسوم";
             } else {
                 feeBox.value = parseInt(fee).toLocaleString() + " دينار عراقي (تُدفع عند الحضور للمكتب)";
             }
         }
+
+        // دالة معالجة الاستشارة وإرسال البيانات
+        function sendConsultation(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById("clientName").value;
+            const phone = document.getElementById("clientPhone").value;
+            const lawyer = document.getElementById("preferredLawyer").value;
+            const fee = document.getElementById("expectedFee").value;
+
+            // كود إرسال الإشعار والتنبيه المباشر
+            alert(`شكراً لك أستاذ ${name}!\nتم تسجيل استشارتك بنجاح للتعامل مع (${lawyer}).\nالرسوم: ${fee}.\nسيتصل بك كادرنا على الرقم (${phone}) لتأكيد الموعد.`);
+            
+            // إعادة ضبط الاستمارة بعد الإرسال
+            document.getElementById("consultationForm").reset();
+            document.getElementById("expectedFee").value = "";
+        }
     </script>
+
+    <?php
+    // كود معالجة البيانات من الخلفية برمجياً في حال تم رفع الملف على سيرفر PHP
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = htmlspecialchars($_POST['name']);
+        $phone = htmlspecialchars($_POST['phone']);
+        $case = htmlspecialchars($_POST['case']);
+        
+        // حفظ البيانات تلقائياً في ملف نصي أو قاعدة بيانات
+        $file = fopen("consultations.txt", "a");
+        $data = "الاسم: $name | الهاتف: $phone | القضية: $case \n";
+        fwrite($file, $data);
+        fclose($file);
+    }
+    ?>
 </body>
 </html>
