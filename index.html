@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتب الفاروق للمحاماة والاستشارات القانونية</title>
+    <title>مكتب الجبوري للمحاماة والاستشارات القانونية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* الألوان الحيوية والملكية */
         :root {
             --navy-blue: #1e3a8a;
             --navy-dark: #172554;
@@ -27,7 +26,6 @@
             font-family: 'Cairo', sans-serif;
         }
 
-        /* جعل الموقع يغطي كامل الشاشة ويضغط الفوتر للأسفل */
         html, body {
             height: 100%;
         }
@@ -41,9 +39,7 @@
             flex-direction: column;
         }
 
-        main {
-            flex: 1; /* هذه الخاصية تجعل المحتوى يتمدد لدفع الفوتر لأسفل الصفحة دائماً */
-        }
+        main { flex: 1; }
 
         /* الهوك العلوي الذكي */
         #status-bar {
@@ -87,7 +83,6 @@
         .logo span { color: var(--gold); }
         .logo-icon { font-size: 2.2rem; }
         
-        /* قائمة الروابط في الأعلى (الجديدة) */
         .nav-links {
             display: flex;
             gap: 25px;
@@ -100,9 +95,7 @@
             font-size: 1.05rem;
             transition: 0.3s;
         }
-        .nav-links a:hover {
-            color: var(--gold);
-        }
+        .nav-links a:hover { color: var(--gold); }
         
         .btn {
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
@@ -134,14 +127,14 @@
             color: #fff;
         }
 
-        /* قسم البطل (Hero Section) */
+        /* قسم البطل (Hero Section) مع صورة اجتماع المحامين */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 90px 5%;
-            background: linear-gradient(to right, rgba(23, 37, 84, 0.95), rgba(30, 58, 138, 0.8)),
-                        url('https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            background: linear-gradient(to right, rgba(23, 37, 84, 0.95), rgba(30, 58, 138, 0.85)),
+                        url('https://images.unsplash.com/photo-1521791136364-798a7bc0d262?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
             color: #fff;
             gap: 40px;
             flex-wrap: wrap;
@@ -236,7 +229,7 @@
         }
         .team-card img {
             width: 100%;
-            height: 300px;
+            height: 320px;
             object-fit: cover;
             object-position: top;
             border-bottom: 4px solid var(--gold);
@@ -245,6 +238,25 @@
         .team-info h3 { font-size: 1.5rem; color: var(--navy-blue); font-weight: 900; margin-bottom: 5px;}
         .team-info .role { color: var(--gold); font-weight: 800; font-size: 1.1rem; margin-bottom: 15px; }
         .team-info .exp { color: var(--text-gray); font-size: 0.95rem; font-weight: 600; }
+
+        /* قسم الثقة والصور القانونية */
+        .trust-banner {
+            background: var(--bg-cream);
+            padding: 60px 5%;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .trust-image { flex: 1; min-width: 300px; text-align: center; }
+        .trust-image img { width: 100%; max-width: 480px; border-radius: 12px; box-shadow: 15px 15px 0px -2px var(--gold); }
+        .trust-content { flex: 1.5; min-width: 300px; }
+        .trust-content h2 { font-size: 2.2rem; color: var(--navy-blue); font-weight: 900; margin-bottom: 20px; }
+        .trust-content p { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 20px; }
+        .check-list { list-style: none; margin-bottom: 30px; }
+        .check-list li { margin-bottom: 12px; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 10px; font-size: 1.05rem; }
 
         /* مجالات الاختصاص */
         .services-grid {
@@ -274,10 +286,10 @@
 
         /* قسم آراء العملاء */
         .testimonials {
-            background-color: var(--bg-cream);
+            background-color: var(--bg-white);
             padding: 70px 5%;
-            border-top: 2px solid #fde68a;
-            border-bottom: 2px solid #fde68a;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
         .reviews-grid {
             display: grid;
@@ -285,7 +297,7 @@
             gap: 25px;
         }
         .review-card {
-            background: var(--bg-white);
+            background: var(--bg-gray);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 10px 15px rgba(0,0,0,0.03);
@@ -353,12 +365,12 @@
         .form-control:focus { border-color: var(--navy-blue); background: #fff; box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1); }
         .full-width { grid-column: span 2; }
 
-        /* الفوتر الاحترافي العريض (الجديد) */
+        /* الفوتر الاحترافي */
         footer {
             background-color: var(--navy-dark);
             color: #cbd5e1;
             width: 100%;
-            margin-top: auto; /* لضمان نزول الفوتر لأسفل الصفحة دائماً */
+            margin-top: auto;
         }
         .footer-container {
             display: flex;
@@ -394,7 +406,6 @@
             color: #94a3b8;
         }
 
-        /* الشاشات الصغيرة */
         @media (max-width: 900px) {
             header { flex-direction: column; text-align: center; gap: 15px; }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
@@ -402,6 +413,7 @@
             .form-grid { grid-template-columns: 1fr; }
             .full-width { grid-column: span 1; }
             .booking-info, .booking-form { padding: 30px 20px; }
+            .trust-banner { flex-direction: column-reverse; text-align: center; }
         }
     </style>
 </head>
@@ -410,10 +422,10 @@
     <!-- الهوك الذكي -->
     <div id="status-bar">جاري التحقق من أوقات العمل في المكتب...</div>
 
-    <!-- الهيدر مع قائمة التنقل الجديدة -->
+    <!-- الهيدر وقائمة التنقل -->
     <header>
         <a href="#" class="logo">
-            <span class="logo-icon">⚖️</span> مكتب الفاروق <span>للمحاماة</span>
+            <span class="logo-icon">⚖️</span> مكتب الجبوري <span>للمحاماة</span>
         </a>
         <ul class="nav-links">
             <li><a href="#">الرئيسية</a></li>
@@ -427,7 +439,7 @@
     </header>
 
     <main>
-        <!-- قسم البطل (Hero) -->
+        <!-- قسم البطل مع صورة اجتماع محامين واقعية -->
         <section class="hero">
             <div class="hero-content">
                 <h1>نحمي حقوقك <br><span>بقوة القانون والخبرة</span></h1>
@@ -440,11 +452,11 @@
                 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <h3>+15</h3>
+                        <h3>+18</h3>
                         <p>سنة من الخبرة</p>
                     </div>
                     <div class="stat-item">
-                        <h3>+850</h3>
+                        <h3>+950</h3>
                         <p>قضية رابحة</p>
                     </div>
                     <div class="stat-item">
@@ -455,36 +467,58 @@
             </div>
         </section>
 
-        <!-- قسم فريق العمل (الخبراء) -->
+        <!-- قسم فريق العمل (محامين رجال) -->
         <section class="team-section" id="team">
             <h2 class="section-title">نخبة من خيرة المحامين</h2>
             <p class="section-subtitle">فريق قانوني متكامل يمتلك خبرات واسعة في مختلف التخصصات لضمان نجاح قضيتك.</p>
             
             <div class="team-grid">
+                <!-- المحامي الأول -->
                 <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="المحامي عمر الفاروق">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="د. إبراهيم الجبوري">
                     <div class="team-info">
-                        <h3>المحامي عمر الفاروق</h3>
+                        <h3>د. إبراهيم الجبوري</h3>
                         <div class="role">المؤسس والمستشار الأول</div>
-                        <p class="exp">⚖️ خبرة 15 سنة في القضايا الجنائية والتجارية الكبرى.</p>
+                        <p class="exp">⚖️ خبرة 18 سنة في قضايا الجنايات والنزاعات التجارية الكبرى.</p>
                     </div>
                 </div>
+
+                <!-- المحامي الثاني (جديد) -->
                 <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="المستشارة سارة محمود">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="المحامي يوسف العبيدي">
                     <div class="team-info">
-                        <h3>المستشارة سارة محمود</h3>
-                        <div class="role">رئيسة قسم الأحوال الشخصية</div>
-                        <p class="exp">⚖️ خبرة 12 سنة في قضايا الأسرة، النفقة، والمواريث.</p>
+                        <h3>المحامي يوسف العبيدي</h3>
+                        <div class="role">رئيس قسم الأحوال الشخصية والمدني</div>
+                        <p class="exp">⚖️ خبرة 14 سنة في قضايا الأسرة، العقارات، والمواثيق الشرعية.</p>
                     </div>
                 </div>
+
+                <!-- المحامي الثالث -->
                 <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=600&q=80" alt="المحامي أحمد الجبوري">
+                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=600&q=80" alt="المحامي أحمد الطائي">
                     <div class="team-info">
-                        <h3>المحامي أحمد الجبوري</h3>
-                        <div class="role">خبير العقود والشركات</div>
-                        <p class="exp">⚖️ خبرة 8 سنوات في تأسيس الشركات والمنازعات العقارية.</p>
+                        <h3>المحامي أحمد الطائي</h3>
+                        <div class="role">خبير العقود وتأسيس الشركات</div>
+                        <p class="exp">⚖️ خبرة 10 سنوات في صياغة العقود التجارية والاستثمار.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- قسم صورة القانون والميزان الواقعي -->
+        <section class="trust-banner">
+            <div class="trust-image">
+                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80" alt="ميزان العدالة والقانون">
+            </div>
+            <div class="trust-content">
+                <h2>لماذا تختار مكتبنا لتمثيلك القانوني؟</h2>
+                <p>القضايا القانونية تتطلب دقة متناهية وفهماً عميقاً للنصوص واللوائح. نحن في مكتب الجبوري بالموصل نلتزم بتقديم أرقى مستويات الخدمة لعملائنا.</p>
+                <ul class="check-list">
+                    <li>⚖️ دراسة تفصيلية وواقعية لنسبة نجاح قضيتك قبل البدء.</li>
+                    <li>⚖️ شفافية تامة في التعامل وإطلاع الموكل على كافة الجلسات.</li>
+                    <li>⚖️ صياغة قانونية رصينة ومحكمة للعقود والمرافعات.</li>
+                    <li>⚖️ حماية تامة لبيانات وسرية الموكلين.</li>
+                </ul>
             </div>
         </section>
 
@@ -520,14 +554,14 @@
             <div class="reviews-grid">
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p class="review-text">"أنقذني مكتب الأستاذ عمر من قضية عقارية معقدة استمرت لسنوات. تميزوا بالدقة والاحترافية العالية والصدق منذ الجلسة الأولى."</p>
+                    <p class="review-text">"أنقذني مكتب الدكتور إبراهيم من قضية عقارية معقدة استمرت لسنوات. تميزوا بالدقة والاحترافية العالية والصدق منذ الجلسة الأولى."</p>
                     <div class="client-name">المهندس خالد خليل</div>
                     <div class="client-case">قضية منازعات عقارية</div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p class="review-text">"استشارتي مع الأستاذة سارة كانت واضحة وصريحة ووفرت علي الكثير من الجهد المادي والنفسي. فريق يستحق كل الاحترام."</p>
-                    <div class="client-name">أم مصطفى</div>
+                    <p class="review-text">"استشارتي مع الأستاذ يوسف كانت واضحة وصريحة ووفرت علي الكثير من الجهد المادي والنفسي. فريق يستحق كل الاحترام."</p>
+                    <div class="client-name">أبو مصطفى</div>
                     <div class="client-case">قضية أحوال شخصية</div>
                 </div>
                 <div class="review-card">
@@ -574,9 +608,9 @@
                             <label>المحامي المفضل</label>
                             <select class="form-control">
                                 <option>أي مستشار متاح</option>
-                                <option>المحامي عمر الفاروق</option>
-                                <option>المستشارة سارة محمود</option>
-                                <option>المحامي أحمد الجبوري</option>
+                                <option>د. إبراهيم الجبوري</option>
+                                <option>المحامي يوسف العبيدي</option>
+                                <option>المحامي أحمد الطائي</option>
                             </select>
                         </div>
                         <div class="form-group full-width">
@@ -594,11 +628,11 @@
         </section>
     </main>
 
-    <!-- الفوتر الاحترافي الجديد -->
+    <!-- الفوتر الاحترافي -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
-                <h3>مكتب الفاروق <span>للمحاماة</span></h3>
+                <h3>مكتب الجبوري <span>للمحاماة</span></h3>
                 <p>مكتب رائد في تقديم الخدمات والاستشارات القانونية المتكاملة. نلتزم بأعلى معايير النزاهة والاحترافية للدفاع عن حقوق موكلينا أمام كافة درجات المحاكم العراقية.</p>
             </div>
             
@@ -617,13 +651,13 @@
                 <ul class="footer-links footer-contact">
                     <li>📍 العراق، نينوى، الموصل، شارع المحاكم</li>
                     <li>📞 0750 000 1234</li>
-                    <li>✉️ info@alfarouq-law.com</li>
+                    <li>✉️ info@aljubouri-law.com</li>
                     <li>⏱️ الأحد - الخميس | 8:00 ص - 4:00 م</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 مكتب الفاروق للمحاماة والاستشارات القانونية. جميع الحقوق محفوظة.</p>
+            <p>&copy; 2026 مكتب الجبوري للمحاماة والاستشارات القانونية. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
@@ -658,754 +692,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
