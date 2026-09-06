@@ -8,12 +8,12 @@
     <style>
         /* الألوان الحيوية والملكية */
         :root {
-            --navy-blue: #1e3a8a; /* أزرق ملكي ساطع وحيوي */
-            --navy-dark: #172554; /* أزرق داكن للتباين */
-            --gold: #d97706; /* ذهبي فخم */
+            --navy-blue: #1e3a8a;
+            --navy-dark: #172554;
+            --gold: #d97706;
             --gold-light: #f59e0b;
             --bg-white: #ffffff;
-            --bg-cream: #fef3c7; /* خلفية كريمية دافئة تعطي روح للموقع */
+            --bg-cream: #fef3c7;
             --bg-gray: #f8fafc;
             --text-dark: #0f172a;
             --text-gray: #475569;
@@ -27,11 +27,22 @@
             font-family: 'Cairo', sans-serif;
         }
 
+        /* جعل الموقع يغطي كامل الشاشة ويضغط الفوتر للأسفل */
+        html, body {
+            height: 100%;
+        }
+        
         body {
             background-color: var(--bg-gray);
             color: var(--text-dark);
             line-height: 1.7;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1; /* هذه الخاصية تجعل المحتوى يتمدد لدفع الفوتر لأسفل الصفحة دائماً */
         }
 
         /* الهوك العلوي الذكي */
@@ -43,25 +54,27 @@
             font-weight: 700;
             font-size: 0.95rem;
             border-bottom: 3px solid var(--gold);
-            transition: all 0.3s ease;
+            width: 100%;
         }
         .status-open { color: #a7f3d0 !important; } 
         .status-closed { color: #fecdd3 !important; } 
 
-        /* الهيدر */
+        /* الهيدر وقائمة التنقل */
         header {
             background-color: var(--bg-white);
             padding: 15px 5%;
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 100%;
         }
+        
         .logo {
             font-size: 1.8rem;
             font-weight: 900;
@@ -69,14 +82,32 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
         .logo span { color: var(--gold); }
         .logo-icon { font-size: 2.2rem; }
         
+        /* قائمة الروابط في الأعلى (الجديدة) */
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
         .btn {
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: #fff;
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 800;
@@ -85,7 +116,7 @@
             transition: all 0.3s ease;
             white-space: nowrap;
             text-align: center;
-            font-size: 1.05rem;
+            font-size: 1rem;
             box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
         }
         .btn:hover { 
@@ -103,7 +134,7 @@
             color: #fff;
         }
 
-        /* قسم البطل (Hero Section) - صورة واقعية وحيوية */
+        /* قسم البطل (Hero Section) */
         .hero {
             display: flex;
             align-items: center;
@@ -114,6 +145,7 @@
             color: #fff;
             gap: 40px;
             flex-wrap: wrap;
+            width: 100%;
         }
         .hero-content { flex: 1; min-width: 300px; }
         .hero-content h1 {
@@ -178,7 +210,7 @@
             border-radius: 2px;
         }
 
-        /* قسم فريق العمل (المحامين) - جديد وحيوي */
+        /* قسم فريق العمل */
         .team-section {
             background-color: var(--bg-white);
             padding: 20px 5% 70px;
@@ -209,9 +241,7 @@
             object-position: top;
             border-bottom: 4px solid var(--gold);
         }
-        .team-info {
-            padding: 25px 20px;
-        }
+        .team-info { padding: 25px 20px; }
         .team-info h3 { font-size: 1.5rem; color: var(--navy-blue); font-weight: 900; margin-bottom: 5px;}
         .team-info .role { color: var(--gold); font-weight: 800; font-size: 1.1rem; margin-bottom: 15px; }
         .team-info .exp { color: var(--text-gray); font-size: 0.95rem; font-weight: 600; }
@@ -232,22 +262,17 @@
             text-align: center;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            position: relative;
         }
         .service-card:hover { 
             transform: translateY(-5px); 
             box-shadow: 0 15px 25px rgba(0,0,0,0.06);
             border-color: var(--navy-blue);
         }
-        .service-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            color: var(--navy-blue);
-        }
+        .service-icon { font-size: 3.5rem; margin-bottom: 15px; color: var(--navy-blue); }
         .service-card h3 { font-size: 1.4rem; color: var(--navy-blue); font-weight: 800; margin-bottom: 10px;}
         .service-card p { color: var(--text-gray); font-size: 1rem; }
 
-        /* قسم آراء العملاء (Testimonials) - جديد ولون دافئ */
+        /* قسم آراء العملاء */
         .testimonials {
             background-color: var(--bg-cream);
             padding: 70px 5%;
@@ -267,21 +292,11 @@
             border-right: 5px solid var(--gold);
         }
         .stars { color: var(--gold-light); font-size: 1.4rem; margin-bottom: 10px; }
-        .review-text {
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        .client-name {
-            font-weight: 900;
-            color: var(--navy-blue);
-            font-size: 1.1rem;
-        }
+        .review-text { font-size: 1.05rem; color: var(--text-dark); font-style: italic; margin-bottom: 20px; line-height: 1.8; }
+        .client-name { font-weight: 900; color: var(--navy-blue); font-size: 1.1rem; }
         .client-case { color: var(--text-gray); font-size: 0.9rem; font-weight: 600; }
 
-        /* قسم الحجز (الاستشارة) */
+        /* قسم الحجز */
         .booking-section {
             display: flex;
             background: var(--bg-white);
@@ -298,11 +313,9 @@
             color: #fff;
             padding: 50px;
             min-width: 300px;
-            position: relative;
         }
         .booking-info h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 15px; color: var(--gold-light); }
         .booking-info p { color: #cbd5e1; margin-bottom: 30px; font-size: 1.05rem; }
-        
         .info-card {
             background: rgba(255,255,255,0.05);
             padding: 16px 20px;
@@ -315,7 +328,6 @@
             font-weight: 700;
             font-size: 1rem;
         }
-        
         .booking-form {
             flex: 1.5;
             padding: 50px;
@@ -341,25 +353,55 @@
         .form-control:focus { border-color: var(--navy-blue); background: #fff; box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1); }
         .full-width { grid-column: span 2; }
 
-        /* الفوتر */
+        /* الفوتر الاحترافي العريض (الجديد) */
         footer {
             background-color: var(--navy-dark);
-            color: #94a3b8;
-            text-align: center;
-            padding: 50px 20px 30px;
+            color: #cbd5e1;
+            width: 100%;
+            margin-top: auto; /* لضمان نزول الفوتر لأسفل الصفحة دائماً */
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 60px 5%;
             border-top: 5px solid var(--gold);
         }
-        footer h3 { color: #fff; font-size: 1.8rem; margin-bottom: 10px; font-weight: 900; }
-        footer p { margin-bottom: 10px; font-size: 1rem; }
+        .footer-col { flex: 1; min-width: 250px; }
+        .footer-col h3 { color: #fff; font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; }
+        .footer-col h3 span { color: var(--gold); }
+        .footer-col p { font-size: 1rem; line-height: 1.8; margin-bottom: 15px; }
+        
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 1rem; transition: 0.3s; font-weight: 600; }
+        .footer-links a:hover { color: var(--gold-light); padding-right: 8px; }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .footer-bottom {
+            background-color: #0f172a;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
 
         /* الشاشات الصغيرة */
-        @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; }
+        @media (max-width: 900px) {
+            header { flex-direction: column; text-align: center; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
             .hero-content h1 { font-size: 2.4rem; }
             .form-grid { grid-template-columns: 1fr; }
             .full-width { grid-column: span 1; }
             .booking-info, .booking-form { padding: 30px 20px; }
-            .team-card img { height: 250px; }
         }
     </style>
 </head>
@@ -368,165 +410,125 @@
     <!-- الهوك الذكي -->
     <div id="status-bar">جاري التحقق من أوقات العمل في المكتب...</div>
 
-    <!-- الهيدر -->
+    <!-- الهيدر مع قائمة التنقل الجديدة -->
     <header>
-        <div class="logo">
+        <a href="#" class="logo">
             <span class="logo-icon">⚖️</span> مكتب الفاروق <span>للمحاماة</span>
-        </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#services">الخدمات القانونية</a></li>
+            <li><a href="#team">فريق العمل</a></li>
+            <li><a href="#testimonials">آراء العملاء</a></li>
+        </ul>
         <div>
-            <a href="#booking" class="btn">احجز استشارتك الآن</a>
+            <a href="#booking" class="btn">احجز استشارتك</a>
         </div>
     </header>
 
-    <!-- قسم البطل (Hero) -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>نحمي حقوقك <br><span>بقوة القانون والخبرة</span></h1>
-            <p>نقدم لك استشارات قانونية دقيقة، وتمثيلاً قضائياً محترفاً أمام كافة المحاكم العراقية. نحن هنا لضمان حقوقك وتوجيهك للطريق السليم بكل سرية وأمانة.</p>
-            
-            <div class="hero-buttons">
-                <a href="#booking" class="btn">تواصل معنا الآن</a>
-                <a href="#team" class="btn btn-outline">تعرف على خبرائنا</a>
-            </div>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <h3>+15</h3>
-                    <p>سنة من الخبرة</p>
+    <main>
+        <!-- قسم البطل (Hero) -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>نحمي حقوقك <br><span>بقوة القانون والخبرة</span></h1>
+                <p>نقدم لك استشارات قانونية دقيقة، وتمثيلاً قضائياً محترفاً أمام كافة المحاكم العراقية. نحن هنا لضمان حقوقك وتوجيهك للطريق السليم بكل سرية وأمانة.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#booking" class="btn">تواصل معنا الآن</a>
+                    <a href="#team" class="btn btn-outline">تعرف على خبرائنا</a>
                 </div>
-                <div class="stat-item">
-                    <h3>+850</h3>
-                    <p>قضية رابحة</p>
-                </div>
-                <div class="stat-item">
-                    <h3>100%</h3>
-                    <p>سرية وموثوقية</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم فريق العمل (الخبراء) -->
-    <section class="team-section" id="team">
-        <h2 class="section-title">نخبة من خيرة المحامين</h2>
-        <p class="section-subtitle">فريق قانوني متكامل يمتلك خبرات واسعة في مختلف التخصصات لضمان نجاح قضيتك.</p>
-        
-        <div class="team-grid">
-            <!-- المحامي الأول -->
-            <div class="team-card">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="المحامي عمر الفاروق">
-                <div class="team-info">
-                    <h3>المحامي عمر الفاروق</h3>
-                    <div class="role">المؤسس والمستشار الأول</div>
-                    <p class="exp">⚖️ خبرة 15 سنة في القضايا الجنائية والتجارية الكبرى.</p>
-                </div>
-            </div>
-
-            <!-- المحامية الثانية -->
-            <div class="team-card">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="المستشارة سارة محمود">
-                <div class="team-info">
-                    <h3>المستشارة سارة محمود</h3>
-                    <div class="role">رئيسة قسم الأحوال الشخصية</div>
-                    <p class="exp">⚖️ خبرة 12 سنة في قضايا الأسرة، النفقة، والمواريث.</p>
-                </div>
-            </div>
-
-            <!-- المحامي الثالث -->
-            <div class="team-card">
-                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=600&q=80" alt="المحامي أحمد الجبوري">
-                <div class="team-info">
-                    <h3>المحامي أحمد الجبوري</h3>
-                    <div class="role">خبير العقود والشركات</div>
-                    <p class="exp">⚖️ خبرة 8 سنوات في تأسيس الشركات والمنازعات العقارية.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- مجالات الاختصاص -->
-    <h2 class="section-title" id="services">مجالات الاختصاص</h2>
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-icon">📜</div>
-            <h3>القضايا المدنية والتجارية</h3>
-            <p>تولي كافة النزاعات المالية، قضايا التعويضات، تحصيل الديون، والنزاعات التعاقدية أمام المحاكم المختصة.</p>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">👨‍👩‍👧‍👦</div>
-            <h3>الأحوال الشخصية</h3>
-            <p>تمثيل قانوني قوي في قضايا الزواج، الطلاق، النفقة، الحضانة، والمصادقة على القسامات الشرعية والنظامية.</p>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">🏢</div>
-            <h3>تأسيس الشركات</h3>
-            <p>تسجيل العلامات التجارية، صياغة العقود الاستثمارية، وتخليص كافة المعاملات القانونية للشركات.</p>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">🏡</div>
-            <h3>العقارات والممتلكات</h3>
-            <p>حل النزاعات العقارية، قضايا إزالة الشيوع، التمليك، والمطالبة بحقوق الملكية بضمانات قاطعة.</p>
-        </div>
-    </div>
-
-    <!-- قسم آراء العملاء (Testimonials) -->
-    <section class="testimonials">
-        <h2 class="section-title" style="margin-top: 0;">ماذا يقول موكلونا؟</h2>
-        <p class="section-subtitle">رضا عملائنا واسترداد حقوقهم هو المؤشر الحقيقي لنجاحنا.</p>
-        
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"أنقذني مكتب الأستاذ عمر من قضية عقارية معقدة استمرت لسنوات. تميزوا بالدقة والاحترافية العالية والصدق منذ الجلسة الأولى."</p>
-                <div class="client-name">المهندس خالد خليل</div>
-                <div class="client-case">قضية منازعات عقارية</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"استشارتي مع الأستاذة سارة كانت واضحة وصريحة ووفرت علي الكثير من الجهد المادي والنفسي. فريق يستحق كل الاحترام."</p>
-                <div class="client-name">أم مصطفى</div>
-                <div class="client-case">قضية أحوال شخصية</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"أفضل مكتب لتأسيس الشركات وصياغة العقود في الموصل بلا منازع. أنهوا إجراءات شركتنا بوقت قياسي وبدون أي تعقيدات."</p>
-                <div class="client-name">شركة الأفق للتجارة</div>
-                <div class="client-case">تأسيس شركة وتوثيق عقود</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- نموذج الحجز والاستشارة -->
-    <section class="booking-section" id="booking">
-        <div class="booking-info">
-            <h2>ابدأ بحماية حقوقك اليوم</h2>
-            <p>لا تتردد في طلب المشورة. املأ النموذج المجاور وسيقوم فريقنا بالتواصل معك لتحديد موعد للاستشارة في المكتب أو هاتفياً.</p>
-            
-            <div class="info-card">
-                📞 الهاتف المباشر: 0750 000 1234
-            </div>
-            <div class="info-card">
-                📍 العنوان: الموصل - قرب مجمع المحاكم
-            </div>
-            <div class="info-card">
-                ⏱️ أوقات الدوام: الأحد - الخميس (8 صباحاً - 4 عصراً)
-            </div>
-        </div>
-
-        <div class="booking-form">
-            <form onsubmit="event.preventDefault(); alert('تم استلام طلب الاستشارة بنجاح! سيتم التواصل معك في أقرب وقت.');">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>الاسم الكامل</label>
-                        <input type="text" class="form-control" placeholder="أدخل اسمك الثلاثي" required>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>+15</h3>
+                        <p>سنة من الخبرة</p>
                     </div>
-                    <div class="form-group">
-                        <label>رقم الهاتف</label>
-                        <input type="tel" class="form-control" placeholder="07XX XXX XXXX" required>
+                    <div class="stat-item">
+                        <h3>+850</h3>
+                        <p>قضية رابحة</p>
                     </div>
-                    <div class="form-group">
-                        <label>نوع القضية / الاستشارة</label>
-                        <select class="form-control" id="caseType" onchange="updateFee()">
-                            <option value="0">اختر نوع القضية</option>
-                            <option value="50000">أحوال شخصية (زواج، طلاق، إرث)</option>
-                            <option value="75000">قضا
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>سرية وموثوقية</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم فريق العمل (الخبراء) -->
+        <section class="team-section" id="team">
+            <h2 class="section-title">نخبة من خيرة المحامين</h2>
+            <p class="section-subtitle">فريق قانوني متكامل يمتلك خبرات واسعة في مختلف التخصصات لضمان نجاح قضيتك.</p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="المحامي عمر الفاروق">
+                    <div class="team-info">
+                        <h3>المحامي عمر الفاروق</h3>
+                        <div class="role">المؤسس والمستشار الأول</div>
+                        <p class="exp">⚖️ خبرة 15 سنة في القضايا الجنائية والتجارية الكبرى.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="المستشارة سارة محمود">
+                    <div class="team-info">
+                        <h3>المستشارة سارة محمود</h3>
+                        <div class="role">رئيسة قسم الأحوال الشخصية</div>
+                        <p class="exp">⚖️ خبرة 12 سنة في قضايا الأسرة، النفقة، والمواريث.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=600&q=80" alt="المحامي أحمد الجبوري">
+                    <div class="team-info">
+                        <h3>المحامي أحمد الجبوري</h3>
+                        <div class="role">خبير العقود والشركات</div>
+                        <p class="exp">⚖️ خبرة 8 سنوات في تأسيس الشركات والمنازعات العقارية.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- مجالات الاختصاص -->
+        <h2 class="section-title" id="services">مجالات الاختصاص</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📜</div>
+                <h3>القضايا المدنية والتجارية</h3>
+                <p>تولي كافة النزاعات المالية، قضايا التعويضات، تحصيل الديون، والنزاعات التعاقدية أمام المحاكم المختصة.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👨‍👩‍👧‍👦</div>
+                <h3>الأحوال الشخصية</h3>
+                <p>تمثيل قانوني قوي في قضايا الزواج، الطلاق، النفقة، الحضانة، والمصادقة على القسامات الشرعية.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>تأسيس الشركات</h3>
+                <p>تسجيل العلامات التجارية، صياغة العقود الاستثمارية، وتخليص كافة المعاملات القانونية للشركات.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏡</div>
+                <h3>العقارات والممتلكات</h3>
+                <p>حل النزاعات العقارية، قضايا إزالة الشيوع، التمليك، والمطالبة بحقوق الملكية بضمانات قاطعة.</p>
+            </div>
+        </div>
+
+        <!-- قسم آراء العملاء -->
+        <section class="testimonials" id="testimonials">
+            <h2 class="section-title" style="margin-top: 0;">ماذا يقول موكلونا؟</h2>
+            <p class="section-subtitle">رضا عملائنا واسترداد حقوقهم هو المؤشر الحقيقي لنجاحنا.</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"أنقذني مكتب الأستاذ عمر من قضية عقارية معقدة استمرت لسنوات. تميزوا بالدقة والاحترافية العالية والصدق منذ الجلسة الأولى."</p>
+                    <div class="client-name">المهندس خالد خليل</div>
+                    <div class="client-case">قضية منازعات عقارية</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"استشارتي مع الأستاذة سارة كانت واضحة وصريحة ووفرت علي الكثير من الجهد المادي والنفسي. فريق يستحق كل الاحترام."</p>
+                    <div class="client-name">أم مصطفى</div>
+                    <div class="client-case">قضية أحوال شخصية</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★
