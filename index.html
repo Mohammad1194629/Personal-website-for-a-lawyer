@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتب المحامي عمر الفاروق | استشارات قانونية</title>
+    <title>مكتب الفاروق للمحاماة والاستشارات القانونية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* الألوان الملكية الخاصة بالمحاماة (الكحلي والذهبي) */
+        /* الألوان الحيوية والملكية */
         :root {
-            --primary-navy: #0f172a; /* كحلي هيبة وقوة */
-            --primary-gold: #d97706; /* ذهبي فخم */
+            --navy-blue: #1e3a8a; /* أزرق ملكي ساطع وحيوي */
+            --navy-dark: #172554; /* أزرق داكن للتباين */
+            --gold: #d97706; /* ذهبي فخم */
             --gold-light: #f59e0b;
             --bg-white: #ffffff;
+            --bg-cream: #fef3c7; /* خلفية كريمية دافئة تعطي روح للموقع */
             --bg-gray: #f8fafc;
-            --text-dark: #1e293b;
+            --text-dark: #0f172a;
             --text-gray: #475569;
-            --border-color: #e2e8f0;
+            --border-light: #e2e8f0;
         }
 
         * {
@@ -34,17 +36,17 @@
 
         /* الهوك العلوي الذكي */
         #status-bar {
-            background: linear-gradient(135deg, var(--primary-navy), #1e293b);
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy-blue));
             color: #fff;
             text-align: center;
             padding: 10px;
             font-weight: 700;
             font-size: 0.95rem;
-            border-bottom: 2px solid var(--primary-gold);
+            border-bottom: 3px solid var(--gold);
             transition: all 0.3s ease;
         }
-        .status-open { color: #a7f3d0 !important; } /* أخضر فاتح للقبول */
-        .status-closed { color: #fecdd3 !important; } /* أحمر فاتح للرفض */
+        .status-open { color: #a7f3d0 !important; } 
+        .status-closed { color: #fecdd3 !important; } 
 
         /* الهيدر */
         header {
@@ -58,25 +60,24 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            color: var(--primary-navy);
-            white-space: nowrap;
+            color: var(--navy-blue);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
-        .logo span { color: var(--primary-gold); }
-        .logo-icon { font-size: 2rem; }
+        .logo span { color: var(--gold); }
+        .logo-icon { font-size: 2.2rem; }
         
         .btn {
-            background: var(--primary-gold);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: #fff;
-            padding: 12px 24px;
-            border-radius: 4px;
+            padding: 12px 28px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 800;
             border: none;
@@ -84,50 +85,52 @@
             transition: all 0.3s ease;
             white-space: nowrap;
             text-align: center;
-            font-size: 1rem;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
         }
         .btn:hover { 
-            background: #b45309;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(217, 119, 6, 0.4);
         }
         .btn-outline {
             background: transparent;
-            color: var(--primary-navy);
-            border: 2px solid var(--primary-navy);
+            color: var(--navy-blue);
+            border: 2px solid var(--navy-blue);
             box-shadow: none;
         }
         .btn-outline:hover {
-            background: var(--primary-navy);
+            background: var(--navy-blue);
             color: #fff;
         }
 
-        /* قسم البطل (Hero Section) */
+        /* قسم البطل (Hero Section) - صورة واقعية وحيوية */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 80px 5%;
-            background: linear-gradient(to left, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.8)),
-                        url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1200&q=80') center/cover;
+            padding: 90px 5%;
+            background: linear-gradient(to right, rgba(23, 37, 84, 0.95), rgba(30, 58, 138, 0.8)),
+                        url('https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
             color: #fff;
             gap: 40px;
             flex-wrap: wrap;
         }
         .hero-content { flex: 1; min-width: 300px; }
         .hero-content h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: #fff;
             line-height: 1.3;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        .hero-content h1 span { color: var(--primary-gold); }
+        .hero-content h1 span { color: var(--gold-light); }
         .hero-content p {
             font-size: 1.15rem;
-            color: #cbd5e1;
+            color: #e2e8f0;
             margin-bottom: 30px;
-            max-width: 95%;
+            max-width: 90%;
+            font-weight: 600;
         }
         
         .hero-buttons {
@@ -136,7 +139,7 @@
             flex-wrap: wrap;
         }
         .hero-buttons .btn-outline { border-color: #fff; color: #fff; }
-        .hero-buttons .btn-outline:hover { background: #fff; color: var(--primary-navy); }
+        .hero-buttons .btn-outline:hover { background: #fff; color: var(--navy-blue); }
 
         .hero-stats {
             display: flex;
@@ -147,106 +150,157 @@
             flex-wrap: wrap;
         }
         .stat-item { flex: 1; min-width: 100px; }
-        .stat-item h3 { font-size: 2rem; color: var(--primary-gold); font-weight: 900;}
-        .stat-item p { font-size: 0.95rem; color: #cbd5e1; font-weight: 700; }
+        .stat-item h3 { font-size: 2.2rem; color: var(--gold-light); font-weight: 900;}
+        .stat-item p { font-size: 1rem; color: #fff; font-weight: 700; }
         
-        /* مجالات الاختصاص */
+        /* العناوين المشتركة */
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            color: var(--primary-navy);
-            margin: 70px 0 40px 0;
+            font-size: 2.5rem;
+            color: var(--navy-blue);
+            margin: 70px 0 20px 0;
             font-weight: 900;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 50px;
+            font-weight: 600;
         }
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 70px;
             height: 4px;
-            background: var(--primary-gold);
+            background: var(--gold);
             margin: 15px auto 0;
             border-radius: 2px;
         }
-        
+
+        /* قسم فريق العمل (المحامين) - جديد وحيوي */
+        .team-section {
+            background-color: var(--bg-white);
+            padding: 20px 5% 70px;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .team-card {
+            background: var(--bg-gray);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(30, 58, 138, 0.1);
+            border-color: var(--gold);
+        }
+        .team-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: top;
+            border-bottom: 4px solid var(--gold);
+        }
+        .team-info {
+            padding: 25px 20px;
+        }
+        .team-info h3 { font-size: 1.5rem; color: var(--navy-blue); font-weight: 900; margin-bottom: 5px;}
+        .team-info .role { color: var(--gold); font-weight: 800; font-size: 1.1rem; margin-bottom: 15px; }
+        .team-info .exp { color: var(--text-gray); font-size: 0.95rem; font-weight: 600; }
+
+        /* مجالات الاختصاص */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             padding: 0 5%;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
         .service-card {
             background: var(--bg-white);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 30px 20px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-light);
             text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
             position: relative;
-            overflow: hidden;
-        }
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: var(--primary-gold);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
         }
         .service-card:hover { 
             transform: translateY(-5px); 
-            box-shadow: 0 15px 25px -5px rgba(0,0,0,0.05);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.06);
+            border-color: var(--navy-blue);
         }
-        .service-card:hover::before { transform: scaleX(1); }
-        
         .service-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 15px;
-            color: var(--primary-navy);
+            color: var(--navy-blue);
         }
-        .service-card h3 { font-size: 1.3rem; color: var(--primary-navy); font-weight: 800; margin-bottom: 10px;}
-        .service-card p { color: var(--text-gray); font-size: 0.95rem; }
+        .service-card h3 { font-size: 1.4rem; color: var(--navy-blue); font-weight: 800; margin-bottom: 10px;}
+        .service-card p { color: var(--text-gray); font-size: 1rem; }
 
-        /* بانر الثقة (مكتب محاماة) */
-        .trust-banner {
-            background: var(--bg-white);
-            padding: 60px 5%;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+        /* قسم آراء العملاء (Testimonials) - جديد ولون دافئ */
+        .testimonials {
+            background-color: var(--bg-cream);
+            padding: 70px 5%;
+            border-top: 2px solid #fde68a;
+            border-bottom: 2px solid #fde68a;
         }
-        .trust-image { flex: 1; min-width: 300px; text-align: center; }
-        .trust-image img { width: 100%; max-width: 450px; border-radius: 8px; box-shadow: 20px 20px 0px -5px var(--primary-gold); }
-        .trust-content { flex: 1.5; min-width: 300px; }
-        .trust-content h2 { font-size: 2.2rem; color: var(--primary-navy); font-weight: 900; margin-bottom: 20px; }
-        .trust-content p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 20px; }
-        .check-list { list-style: none; margin-bottom: 30px; }
-        .check-list li { margin-bottom: 10px; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 10px; }
-        .check-list li::before { content: '⚖️'; font-size: 1.2rem; }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .review-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.03);
+            border-right: 5px solid var(--gold);
+        }
+        .stars { color: var(--gold-light); font-size: 1.4rem; margin-bottom: 10px; }
+        .review-text {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .client-name {
+            font-weight: 900;
+            color: var(--navy-blue);
+            font-size: 1.1rem;
+        }
+        .client-case { color: var(--text-gray); font-size: 0.9rem; font-weight: 600; }
 
         /* قسم الحجز (الاستشارة) */
         .booking-section {
             display: flex;
             background: var(--bg-white);
-            margin: 70px 5%;
-            border-radius: 12px;
+            margin: 80px 5%;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.05);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.08);
             flex-wrap: wrap;
+            border: 1px solid var(--border-light);
         }
         .booking-info {
             flex: 1;
-            background: var(--primary-navy);
+            background: var(--navy-dark);
             color: #fff;
             padding: 50px;
             min-width: 300px;
+            position: relative;
         }
-        .booking-info h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 15px; color: var(--primary-gold); }
+        .booking-info h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 15px; color: var(--gold-light); }
         .booking-info p { color: #cbd5e1; margin-bottom: 30px; font-size: 1.05rem; }
         
         .info-card {
@@ -276,43 +330,42 @@
         .form-group { display: flex; flex-direction: column; gap: 8px; }
         .form-group label { font-weight: 800; font-size: 0.95rem; color: var(--text-dark); }
         .form-control {
-            padding: 12px 16px;
-            border-radius: 4px;
-            border: 2px solid var(--border-color);
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 2px solid var(--border-light);
             background: var(--bg-gray);
             font-size: 1rem;
             outline: none;
-            transition: all 0.2s;
+            transition: all 0.3s;
         }
-        .form-control:focus { border-color: var(--primary-navy); background: #fff; }
+        .form-control:focus { border-color: var(--navy-blue); background: #fff; box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1); }
         .full-width { grid-column: span 2; }
 
         /* الفوتر */
         footer {
-            background-color: var(--primary-navy);
+            background-color: var(--navy-dark);
             color: #94a3b8;
             text-align: center;
             padding: 50px 20px 30px;
-            border-top: 5px solid var(--primary-gold);
+            border-top: 5px solid var(--gold);
         }
-        footer h3 { color: #fff; font-size: 1.5rem; margin-bottom: 15px; }
-        footer p { margin-bottom: 10px; font-size: 0.95rem; }
+        footer h3 { color: #fff; font-size: 1.8rem; margin-bottom: 10px; font-weight: 900; }
+        footer p { margin-bottom: 10px; font-size: 1rem; }
 
-        /* تعديلات الموبايل */
+        /* الشاشات الصغيرة */
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; }
-            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 2.4rem; }
             .form-grid { grid-template-columns: 1fr; }
             .full-width { grid-column: span 1; }
             .booking-info, .booking-form { padding: 30px 20px; }
-            .trust-banner { flex-direction: column-reverse; text-align: center; }
-            .check-list li { justify-content: center; }
+            .team-card img { height: 250px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- الهوك الذكي للوقت -->
+    <!-- الهوك الذكي -->
     <div id="status-bar">جاري التحقق من أوقات العمل في المكتب...</div>
 
     <!-- الهيدر -->
@@ -321,7 +374,7 @@
             <span class="logo-icon">⚖️</span> مكتب الفاروق <span>للمحاماة</span>
         </div>
         <div>
-            <a href="#booking" class="btn">اطلب استشارة قانونية</a>
+            <a href="#booking" class="btn">احجز استشارتك الآن</a>
         </div>
     </header>
 
@@ -329,25 +382,63 @@
     <section class="hero">
         <div class="hero-content">
             <h1>نحمي حقوقك <br><span>بقوة القانون والخبرة</span></h1>
-            <p>نقدم لك استشارات قانونية دقيقة، وتمثيلاً قضائياً محترفاً أمام كافة المحاكم العراقية. نحن هنا لضمان حقوقك وتوجيهك للطريق القانوني السليم بكل سرية وأمانة.</p>
+            <p>نقدم لك استشارات قانونية دقيقة، وتمثيلاً قضائياً محترفاً أمام كافة المحاكم العراقية. نحن هنا لضمان حقوقك وتوجيهك للطريق السليم بكل سرية وأمانة.</p>
             
             <div class="hero-buttons">
-                <a href="#booking" class="btn">احجز موعدك الآن</a>
-                <a href="#services" class="btn btn-outline">مجالات الاختصاص</a>
+                <a href="#booking" class="btn">تواصل معنا الآن</a>
+                <a href="#team" class="btn btn-outline">تعرف على خبرائنا</a>
             </div>
             
             <div class="hero-stats">
                 <div class="stat-item">
-                    <h3>+12</h3>
+                    <h3>+15</h3>
                     <p>سنة من الخبرة</p>
                 </div>
                 <div class="stat-item">
-                    <h3>+500</h3>
+                    <h3>+850</h3>
                     <p>قضية رابحة</p>
                 </div>
                 <div class="stat-item">
                     <h3>100%</h3>
-                    <p>سرية تامة</p>
+                    <p>سرية وموثوقية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم فريق العمل (الخبراء) -->
+    <section class="team-section" id="team">
+        <h2 class="section-title">نخبة من خيرة المحامين</h2>
+        <p class="section-subtitle">فريق قانوني متكامل يمتلك خبرات واسعة في مختلف التخصصات لضمان نجاح قضيتك.</p>
+        
+        <div class="team-grid">
+            <!-- المحامي الأول -->
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="المحامي عمر الفاروق">
+                <div class="team-info">
+                    <h3>المحامي عمر الفاروق</h3>
+                    <div class="role">المؤسس والمستشار الأول</div>
+                    <p class="exp">⚖️ خبرة 15 سنة في القضايا الجنائية والتجارية الكبرى.</p>
+                </div>
+            </div>
+
+            <!-- المحامية الثانية -->
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="المستشارة سارة محمود">
+                <div class="team-info">
+                    <h3>المستشارة سارة محمود</h3>
+                    <div class="role">رئيسة قسم الأحوال الشخصية</div>
+                    <p class="exp">⚖️ خبرة 12 سنة في قضايا الأسرة، النفقة، والمواريث.</p>
+                </div>
+            </div>
+
+            <!-- المحامي الثالث -->
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=600&q=80" alt="المحامي أحمد الجبوري">
+                <div class="team-info">
+                    <h3>المحامي أحمد الجبوري</h3>
+                    <div class="role">خبير العقود والشركات</div>
+                    <p class="exp">⚖️ خبرة 8 سنوات في تأسيس الشركات والمنازعات العقارية.</p>
                 </div>
             </div>
         </div>
@@ -356,47 +447,52 @@
     <!-- مجالات الاختصاص -->
     <h2 class="section-title" id="services">مجالات الاختصاص</h2>
     <div class="services-grid">
-        
         <div class="service-card">
             <div class="service-icon">📜</div>
-            <h3>القضايا المدنية</h3>
-            <p>تولي كافة النزاعات المدنية، قضايا التعويضات، تحصيل الديون، والنزاعات التعاقدية أمام المحاكم المختصة.</p>
+            <h3>القضايا المدنية والتجارية</h3>
+            <p>تولي كافة النزاعات المالية، قضايا التعويضات، تحصيل الديون، والنزاعات التعاقدية أمام المحاكم المختصة.</p>
         </div>
-
         <div class="service-card">
             <div class="service-icon">👨‍👩‍👧‍👦</div>
             <h3>الأحوال الشخصية</h3>
-            <p>خبرة واسعة في قضايا الزواج، الطلاق، النفقة، الحضانة، المواريث، والقسامات الشرعية والنظامية.</p>
+            <p>تمثيل قانوني قوي في قضايا الزواج، الطلاق، النفقة، الحضانة، والمصادقة على القسامات الشرعية والنظامية.</p>
         </div>
-
         <div class="service-card">
             <div class="service-icon">🏢</div>
-            <h3>الشركات والعقود التجارية</h3>
-            <p>تأسيس الشركات، صياغة العقود التجارية ومراجعتها، وتسجيل العلامات التجارية وحل النزاعات التجارية.</p>
+            <h3>تأسيس الشركات</h3>
+            <p>تسجيل العلامات التجارية، صياغة العقود الاستثمارية، وتخليص كافة المعاملات القانونية للشركات.</p>
         </div>
-
         <div class="service-card">
             <div class="service-icon">🏡</div>
-            <h3>العقارات والأراضي</h3>
-            <p>حل النزاعات العقارية، قضايا إزالة الشيوع، التمليك، وصياغة عقود البيع والشراء والإيجار بضمانات قانونية.</p>
+            <h3>العقارات والممتلكات</h3>
+            <p>حل النزاعات العقارية، قضايا إزالة الشيوع، التمليك، والمطالبة بحقوق الملكية بضمانات قاطعة.</p>
         </div>
-
     </div>
 
-    <!-- بانر الثقة -->
-    <section class="trust-banner">
-        <div class="trust-image">
-            <img src="https://images.unsplash.com/photo-1505664115167-ce63dc7532cc?auto=format&fit=crop&w=800&q=80" alt="كتب قانونية ومكتب محاماة">
-        </div>
-        <div class="trust-content">
-            <h2>لماذا تختار مكتبنا لتمثيلك القانوني؟</h2>
-            <p>القضايا القانونية تتطلب دقة متناهية وفهماً عميقاً للنصوص واللوائح. نحن في مكتب المحامي عمر الفاروق في مدينة الموصل، نلتزم بتقديم أرقى مستويات الخدمة القانونية لعملائنا.</p>
-            <ul class="check-list">
-                <li>دراسة تفصيلية وواقعية لنسبة نجاح قضيتك قبل البدء.</li>
-                <li>شفافية تامة في التعامل وإطلاع الموكل على سير الدعوى.</li>
-                <li>صياغة قانونية رصينة ومحكمة للعقود والمرافعات.</li>
-                <li>حماية تامة للبيانات ومعلومات الموكلين (سرية المهنة).</li>
-            </ul>
+    <!-- قسم آراء العملاء (Testimonials) -->
+    <section class="testimonials">
+        <h2 class="section-title" style="margin-top: 0;">ماذا يقول موكلونا؟</h2>
+        <p class="section-subtitle">رضا عملائنا واسترداد حقوقهم هو المؤشر الحقيقي لنجاحنا.</p>
+        
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"أنقذني مكتب الأستاذ عمر من قضية عقارية معقدة استمرت لسنوات. تميزوا بالدقة والاحترافية العالية والصدق منذ الجلسة الأولى."</p>
+                <div class="client-name">المهندس خالد خليل</div>
+                <div class="client-case">قضية منازعات عقارية</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"استشارتي مع الأستاذة سارة كانت واضحة وصريحة ووفرت علي الكثير من الجهد المادي والنفسي. فريق يستحق كل الاحترام."</p>
+                <div class="client-name">أم مصطفى</div>
+                <div class="client-case">قضية أحوال شخصية</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"أفضل مكتب لتأسيس الشركات وصياغة العقود في الموصل بلا منازع. أنهوا إجراءات شركتنا بوقت قياسي وبدون أي تعقيدات."</p>
+                <div class="client-name">شركة الأفق للتجارة</div>
+                <div class="client-case">تأسيس شركة وتوثيق عقود</div>
+            </div>
         </div>
     </section>
 
@@ -432,70 +528,5 @@
                         <label>نوع القضية / الاستشارة</label>
                         <select class="form-control" id="caseType" onchange="updateFee()">
                             <option value="0">اختر نوع القضية</option>
-                            <option value="50000">أحوال شخصية (زواج، طلاق، الخ)</option>
-                            <option value="75000">قضايا مدنية ومطالبات مالية</option>
-                            <option value="100000">تأسيس شركات وعقود تجارية</option>
-                            <option value="50000">قضايا عقارية وأراضي</option>
-                            <option value="25000">استشارة قانونية عامة (نصف ساعة)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>التاريخ المفضل للموعد</label>
-                        <input type="date" class="form-control" required>
-                    </div>
-                    <div class="form-group full-width">
-                        <label>رسوم الاستشارة المبدئية</label>
-                        <input type="text" id="expectedFee" class="form-control" placeholder="تحدد بناءً على نوع القضية المختار" readonly style="background: #f8fafc; font-weight: 800; color: #d97706; border-color: #d97706;">
-                    </div>
-                    <div class="form-group full-width">
-                        <label>تفاصيل مختصرة عن الموضوع (اختياري)</label>
-                        <textarea class="form-control" rows="4" placeholder="اكتب نبذة بسيطة عن مشكلتك أو استشارتك ليتمكن المحامي من الاطلاع عليها مسبقاً..."></textarea>
-                    </div>
-                </div>
-                <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem; padding: 14px;">إرسال طلب الاستشارة</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <h3>مكتب المحامي عمر الفاروق</h3>
-        <p>العدالة غايتنا، والقانون أداة حمايتك.</p>
-        <p>العراق - محافظة نينوى - الموصل</p>
-        <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.7;">&copy; 2026 جميع الحقوق محفوظة.</p>
-    </footer>
-
-    <!-- الجافاسكربت للتفاعل -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const statusBar = document.getElementById("status-bar");
-            const currentHour = new Date().getHours();
-            
-            // أوقات عمل المحاكم والمحامين عادة (8 صباحاً إلى 4 عصراً)
-            const openingHour = 8;
-            const closingHour = 16; 
-
-            if (currentHour >= openingHour && currentHour < closingHour) {
-                statusBar.innerHTML = "🟢 مكتب المحاماة مفتوح الآن.. نتشرف بزيارتكم أو استقبال مكالماتكم.";
-                statusBar.classList.add("status-open");
-            } else {
-                statusBar.innerHTML = "🔴 المكتب مغلق حالياً.. لكن يمكنك ترك طلب استشارة بالأسفل وسنتصل بك في يوم العمل القادم.";
-                statusBar.classList.add("status-closed");
-            }
-        });
-
-        // تحديث رسوم الاستشارة تلقائياً
-        function updateFee() {
-            const select = document.getElementById("caseType");
-            const feeBox = document.getElementById("expectedFee");
-            const fee = select.value;
-            
-            if (fee == 0) {
-                feeBox.value = "يرجى تحديد نوع القضية لمعرفة الرسوم";
-            } else {
-                feeBox.value = parseInt(fee).toLocaleString() + " دينار عراقي (تُدفع عند الحضور)";
-            }
-        }
-    </script>
-</body>
-  </html>
-  
+                            <option value="50000">أحوال شخصية (زواج، طلاق، إرث)</option>
+                            <option value="75000">قضا
