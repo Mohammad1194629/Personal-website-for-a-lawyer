@@ -531,4 +531,881 @@
                     <div class="client-case">قضية أحوال شخصية</div>
                 </div>
                 <div class="review-card">
-                    <div class="stars">★★
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"أفضل مكتب لتأسيس الشركات وصياغة العقود في الموصل بلا منازع. أنهوا إجراءات شركتنا بوقت قياسي وبدون أي تعقيدات."</p>
+                    <div class="client-name">شركة الأفق للتجارة</div>
+                    <div class="client-case">تأسيس شركة وتوثيق عقود</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- نموذج الحجز -->
+        <section class="booking-section" id="booking">
+            <div class="booking-info">
+                <h2>ابدأ بحماية حقوقك اليوم</h2>
+                <p>لا تتردد في طلب المشورة. املأ النموذج المجاور وسيقوم فريقنا بالتواصل معك لتحديد موعد للاستشارة.</p>
+                <div class="info-card">📞 الهاتف: 0750 000 1234</div>
+                <div class="info-card">📍 العنوان: الموصل - قرب مجمع المحاكم</div>
+                <div class="info-card">⏱️ أوقات الدوام: الأحد - الخميس (8 صباحاً - 4 عصراً)</div>
+            </div>
+            <div class="booking-form">
+                <form onsubmit="event.preventDefault(); alert('تم استلام طلب الاستشارة بنجاح! سيتم التواصل معك قريباً.');">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>الاسم الكامل</label>
+                            <input type="text" class="form-control" placeholder="أدخل اسمك الثلاثي" required>
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" class="form-control" placeholder="07XX XXX XXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label>نوع القضية</label>
+                            <select class="form-control" id="caseType" onchange="updateFee()">
+                                <option value="0">اختر نوع القضية</option>
+                                <option value="50000">أحوال شخصية (زواج، طلاق، إرث)</option>
+                                <option value="75000">قضايا مدنية ومطالبات مالية</option>
+                                <option value="100000">شركات وعقود تجارية</option>
+                                <option value="50000">قضايا عقارية</option>
+                                <option value="25000">استشارة عامة</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>المحامي المفضل</label>
+                            <select class="form-control">
+                                <option>أي مستشار متاح</option>
+                                <option>المحامي عمر الفاروق</option>
+                                <option>المستشارة سارة محمود</option>
+                                <option>المحامي أحمد الجبوري</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>رسوم الاستشارة المبدئية</label>
+                            <input type="text" id="expectedFee" class="form-control" placeholder="تحدد تلقائياً بناءً على نوع القضية" readonly style="background: #f0f9ff; font-weight: 900; color: #1e3a8a; border-color: #1e3a8a;">
+                        </div>
+                        <div class="form-group full-width">
+                            <label>تفاصيل مختصرة (اختياري)</label>
+                            <textarea class="form-control" rows="3" placeholder="نبذة بسيطة عن مشكلتك..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; font-size: 1.15rem; padding: 15px;">إرسال طلب الاستشارة</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- الفوتر الاحترافي الجديد -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>مكتب الفاروق <span>للمحاماة</span></h3>
+                <p>مكتب رائد في تقديم الخدمات والاستشارات القانونية المتكاملة. نلتزم بأعلى معايير النزاهة والاحترافية للدفاع عن حقوق موكلينا أمام كافة درجات المحاكم العراقية.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3 style="color: var(--gold);">روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#services">مجالات الاختصاص</a></li>
+                    <li><a href="#team">فريق المحامين</a></li>
+                    <li><a href="#booking">حجز موعد استشارة</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3 style="color: var(--gold);">تواصل معنا</h3>
+                <ul class="footer-links footer-contact">
+                    <li>📍 العراق، نينوى، الموصل، شارع المحاكم</li>
+                    <li>📞 0750 000 1234</li>
+                    <li>✉️ info@alfarouq-law.com</li>
+                    <li>⏱️ الأحد - الخميس | 8:00 ص - 4:00 م</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 مكتب الفاروق للمحاماة والاستشارات القانونية. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- الجافاسكربت للتفاعل -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const statusBar = document.getElementById("status-bar");
+            const currentHour = new Date().getHours();
+            const openingHour = 8;
+            const closingHour = 16; 
+
+            if (currentHour >= openingHour && currentHour < closingHour) {
+                statusBar.innerHTML = "🟢 مكتب المحاماة مفتوح الآن.. نتشرف بزيارتكم أو استقبال مكالماتكم.";
+                statusBar.classList.add("status-open");
+            } else {
+                statusBar.innerHTML = "🔴 المكتب مغلق حالياً.. لكن يمكنك ترك طلب استشارة وسنتصل بك قريباً.";
+                statusBar.classList.add("status-closed");
+            }
+        });
+
+        function updateFee() {
+            const select = document.getElementById("caseType");
+            const feeBox = document.getElementById("expectedFee");
+            const fee = select.value;
+            
+            if (fee == 0) {
+                feeBox.value = "يرجى تحديد نوع القضية لمعرفة الرسوم";
+            } else {
+                feeBox.value = parseInt(fee).toLocaleString() + " دينار عراقي (تُدفع عند الحضور للمكتب)";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
